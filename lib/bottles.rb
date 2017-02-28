@@ -1,6 +1,10 @@
 class Bottles
   INITIAL_VALUE = 99
 
+  ACTIONS = Hash.new 'Take one down and pass it around'
+  ACTIONS[1] = 'Take it down and pass it around'
+  ACTIONS[0] = 'Go to the store and buy some more'
+
   def song
     verses INITIAL_VALUE, 0
   end
@@ -14,15 +18,11 @@ class Bottles
     bottles[1] = '1 bottle'
     bottles[0] = 'no more bottles'
 
-    actions = Hash.new 'Take one down and pass it around'
-    actions[1] = 'Take it down and pass it around'
-    actions[0] = 'Go to the store and buy some more'
-
     remaining = count > 0 ? count - 1 : INITIAL_VALUE
 
     <<~VERSE
     #{bottles[count].capitalize} of beer on the wall, #{bottles[count]} of beer.
-    #{actions[count]}, #{bottles[remaining]} of beer on the wall.
+    #{ACTIONS[count]}, #{bottles[remaining]} of beer on the wall.
     VERSE
   end
 end
