@@ -1,14 +1,17 @@
 class BottleCollection
-  COLLECTION = Hash.new { |hash, key| "#{key} bottles" }
-  COLLECTION[1] = '1 bottle'
-  COLLECTION[0] = 'no more bottles'
-
-  def initialize count
+  def initialize count, containers
     @count = count
+    @containers = containers
   end
   
   def to_s
-    COLLECTION[@count]
+    remaining = @count
+
+    @containers.each_with_object([]) do |container_class, result|
+      container = container_class.new remaining
+      remaining = container.remaining_bottles
+      result << container.to_s
+    end.join
   end
 
   def drink

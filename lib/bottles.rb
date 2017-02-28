@@ -1,3 +1,4 @@
+require_relative 'single_bottles'
 require_relative 'bottle_collection'
 
 class Bottles
@@ -6,6 +7,10 @@ class Bottles
   ACTIONS = Hash.new 'Take one down and pass it around'
   ACTIONS[1] = 'Take it down and pass it around'
   ACTIONS[0] = 'Go to the store and buy some more'
+
+  def initialize containers = [SingleBottles]
+    @containers = containers
+  end
 
   def song
     verses INITIAL_VALUE, 0
@@ -16,7 +21,7 @@ class Bottles
   end
 
   def verse count
-    collection = BottleCollection.new count
+    collection = BottleCollection.new count, @containers
 
     "#{collection.to_s.capitalize} of beer on the wall, #{collection} of beer.\n"\
     "#{ACTIONS[count]}, "\
