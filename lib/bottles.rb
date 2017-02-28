@@ -1,6 +1,8 @@
 class Bottles
+  INITIAL_VALUE = 99
+
   def song
-    verses 99, 0
+    verses INITIAL_VALUE, 0
   end
 
   def verses high, low
@@ -16,7 +18,7 @@ class Bottles
     actions[1] = 'Take it down and pass it around'
     actions[0] = 'Go to the store and buy some more'
 
-    remaining = count > 0 ? count - 1 : 99
+    remaining = count > 0 ? count - 1 : INITIAL_VALUE
 
     <<~VERSE
     #{bottles[count].capitalize} of beer on the wall, #{bottles[count]} of beer.
