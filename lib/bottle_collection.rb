@@ -8,10 +8,10 @@ class BottleCollection
     remaining = @count
 
     @containers.each_with_object([]) do |container_class, result|
-      container = container_class.new remaining
+      container = container_class.new remaining, !result.empty?
       remaining = container.remaining_bottles
-      result << container.to_s
-    end.join
+      result << container.to_s unless container.to_s.empty?
+    end.join ' and '
   end
 
   def drink

@@ -1,3 +1,4 @@
+require_relative 'six_packs'
 require_relative 'single_bottles'
 require_relative 'bottle_collection'
 
