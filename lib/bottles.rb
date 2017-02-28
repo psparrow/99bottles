@@ -1,3 +1,5 @@
+require_relative 'bottle_collection'
+
 class Bottles
   INITIAL_VALUE = 99
 
@@ -14,15 +16,11 @@ class Bottles
   end
 
   def verse count
-    bottles = Hash.new { |hash, key| "#{key} bottles" }
-    bottles[1] = '1 bottle'
-    bottles[0] = 'no more bottles'
-
-    remaining = count > 0 ? count - 1 : INITIAL_VALUE
+    collection = BottleCollection.new count
 
     <<~VERSE
-    #{bottles[count].capitalize} of beer on the wall, #{bottles[count]} of beer.
-    #{ACTIONS[count]}, #{bottles[remaining]} of beer on the wall.
+    #{collection.to_s.capitalize} of beer on the wall, #{collection} of beer.
+    #{ACTIONS[count]}, #{collection.drink} of beer on the wall.
     VERSE
   end
 end
