@@ -12,7 +12,16 @@ class BottleCollection
   end
 
   def drink
+    return false if @count < 1
+
     @count -= 1
+
+    self
+  end
+
+  def set_count count
+    @count = count
+
     self
   end
 end

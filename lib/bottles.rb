@@ -18,9 +18,9 @@ class Bottles
   def verse count
     collection = BottleCollection.new count
 
-    <<~VERSE
-    #{collection.to_s.capitalize} of beer on the wall, #{collection} of beer.
-    #{ACTIONS[count]}, #{collection.drink} of beer on the wall.
-    VERSE
+    "#{collection.to_s.capitalize} of beer on the wall, #{collection} of beer.\n"\
+    "#{ACTIONS[count]}, "\
+    "#{collection.drink || collection.set_count(INITIAL_VALUE)} "\
+    "of beer on the wall.\n"
   end
 end
