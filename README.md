@@ -1,23 +1,14 @@
 # 99 Bottles
 
-## Installing Ruby
+My solution to the 99 bottles problem from Sandi Metz's and Katrina Owen's book 99 Bottles of OOP.
 
-### Windows
+It supports cases, six-packs, and bottles. It can easily be extended to support other container sizes by adding additional classes.
 
-There's an installer, it's easy.
-http://rubyinstaller.org/
+	Bottles.new.verse(89)
+	=> "89 bottles of beer on the wall, 89 bottles of beer.\nTake one down and pass it around, 88 bottles of beer on the wall.\n" 
 
-### Mac
+	Bottles.new([SixPacks, SingleBottles]).verse(89)
+	=> "14 six-packs and 5 bottles of beer on the wall, 14 six-packs and 5 bottles of beer.\nTake one down and pass it around, 14 six-packs and 4 bottles of beer on the wall.\n" 
 
-Newer macs ship with a usable version of Ruby.
-
-Try `ruby -v` in a terminal window, and if it's 1.9.x or 2.x you're fine.
-
-http://www.railstutorial.org/book/beginning#sec-install_ruby
-http://tutorials.jumpstartlab.com/topics/environment/environment.html
-http://docs.railsbridge.org/installfest/macintosh
-
-### Linux
-
-Ubuntu: http://docs.railsbridge.org/installfest/linux
-https://www.ruby-lang.org/en/installation/
+	Bottles.new([Cases, SixPacks, SingleBottles]).verse(89)
+	=> "3 cases, 2 six-packs, and 5 bottles of beer on the wall, 3 cases, 2 six-packs, and 5 bottles of beer.\nTake one down and pass it around, 3 cases, 2 six-packs, and 4 bottles of beer on the wall.\n" 
